@@ -12,5 +12,15 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+<!--    <dependencies>-->
+    <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin &ndash;&gt;-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.projectlombok</groupId>-->
+    <!--            <artifactId>lombok-maven-plugin</artifactId>-->
+    <!--            <version>1.18.20.0</version>-->
+    <!--            <scope>provided</scope>-->
+    <!--        </dependency>-->
+
+    <!--    </dependencies>-->
 
 </project>
