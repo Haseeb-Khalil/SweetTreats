@@ -11,10 +11,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(String orderTime, boolean hasRefrigeratedBox, double distance) {
+    public Order(String orderTime, boolean hasRefrigeratedBox, String distance) {
         this.orderTime = LocalTime.parse(orderTime, DateTimeFormatter.ofPattern("HH:mm"));
         this.isRefrigeratedBoxRequired = hasRefrigeratedBox;
-        this.distance = distance;
+        this.distance =(Double.parseDouble(distance));
     }
 
     public LocalTime getOrderTime() {

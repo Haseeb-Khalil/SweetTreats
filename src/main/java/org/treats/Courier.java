@@ -34,8 +34,8 @@ public class Courier {
         this.name = name;
     }
 
-    public Double getMaxDistance() {
-        return Double.valueOf(maxDistance);
+    public double getMaxDistance() {
+        return Double.parseDouble(maxDistance);
     }
 
     public void setMaxDistance(String maxDistance) {
@@ -74,5 +74,8 @@ public class Courier {
         this.hasRefrigeratedBox = hasRefrigeratedBox;
     }
 
-
+    //    @Override
+    public boolean isAvailable(Order order) {
+        return order.getOrderTime().isAfter(startTime) && order.getOrderTime().isBefore(endTime) && order.getDistance() <= getMaxDistance() && order.isRefrigeratedBoxRequired() == hasRefrigeratedBox;
+    }
 }
