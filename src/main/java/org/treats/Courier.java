@@ -15,9 +15,9 @@ public class Courier {
     }
 
 
-    public Courier(String name, double maxDistance, double pricePerMile, String startTime, String endTime, boolean hasRefrigeratedBox) {
+    public Courier(String name, String maxDistance, double pricePerMile, String startTime, String endTime, boolean hasRefrigeratedBox) {
         this.name = name;
-        this.maxDistance = maxDistance + " miles";
+        this.maxDistance = Double.toString(Double.parseDouble(maxDistance));
         this.pricePerMile = pricePerMile;
         this.startTime = LocalTime.parse(startTime, DateTimeFormatter.ofPattern("HH:mm"));
         this.endTime = LocalTime.parse(endTime, DateTimeFormatter.ofPattern("HH:mm"));
@@ -34,12 +34,12 @@ public class Courier {
         this.name = name;
     }
 
-    public String getMaxDistance() {
-        return maxDistance;
+    public Double getMaxDistance() {
+        return Double.valueOf(maxDistance);
     }
 
-    public void setMaxDistance(double maxDistance) {
-        this.maxDistance = String.valueOf(maxDistance);
+    public void setMaxDistance(String maxDistance) {
+        this.maxDistance = maxDistance;
     }
 
     public double getPricePerMile() {
@@ -73,11 +73,6 @@ public class Courier {
     public void setHasRefrigeratedBox(boolean hasRefrigeratedBox) {
         this.hasRefrigeratedBox = hasRefrigeratedBox;
     }
-
-    public String toString() {
-        return "Name: " + this.name + "\n" + "Miles: " + this.maxDistance + "\n" + "Charge per Mile: " + this.pricePerMile + "\n" + "Start Time: " + this.startTime + "\n" + "End Time: " + this.endTime + "\n" + "Refrigerated Box: " + this.hasRefrigeratedBox;
-    }
-
 
 
 }
