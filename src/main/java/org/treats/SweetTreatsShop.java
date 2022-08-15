@@ -1,14 +1,15 @@
 package org.treats;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class SweetTreatsShop {
-    static Courier bobby = new Courier("Bobby", "5", 1.75, "09:00", "13:00", true);
-    static Courier martin = new Courier("Martin", "3", 1.50, "09:00", "17:00", false);
-    static Courier geoff = new Courier("Geoff", "5", 2.00, "10:00", "16:00", true);
+    static Courier bobby = new Courier("Bobby", 5.0, 1.75, "09:00", "13:00", true);
+    static Courier martin = new Courier("Martin", 3.0, 1.50, "09:00", "17:00", false);
+    static Courier geoff = new Courier("Geoff", 4.0, 2.00, "10:00", "16:00", true);
 
     // Couriers List
     static List<Courier> couriers = new ArrayList<>(
@@ -18,16 +19,16 @@ public class SweetTreatsShop {
     // Courier selector for Best courier of the hour
     public static Courier getBestSuitableCourier(Order order) throws Exception {
 
-        if (order.getOrderTime() == null || order.getDistance() == 0) {
-            throw new Exception("Order time, Refrigerated box requirement and Distance are required");
+        if (order.getDistance() <= 0) {
+            throw new Exception("Correct Distance is required");
         }
-        if (order.getOrderTime().isBefore(LocalTime.parse("09:00")) || order.getOrderTime().isAfter(LocalTime.parse("17:00"))) {
+        if (order.getOrderTime().isBefore(LocalTime.parse("09:00", DateTimeFormatter.ofPattern("HH:mm"))) || order.getOrderTime().isAfter(LocalTime.parse("17:00", DateTimeFormatter.ofPattern("HH:mm")))) {
             throw new Exception("Order time is outside of working hours");
         }
         return couriers.stream()
                 .filter(courier -> courier.isAvailable(order))
                 .findFirst()
-                .orElseThrow(() -> new Exception("No suitable courier found"));
+                .orElseThrow(() -> new Exception("No suitable courier found for this order: " + "\n" + "Order Time: " + order.getOrderTime() + "\n" + "Refrigerated Box Required: " + order.isRefrigeratedBoxRequired() + "\n" + "Distance Between Customer And Restaurant: " + order.getDistance() + " miles."));
     }
 
 

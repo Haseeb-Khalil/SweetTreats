@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Courier {
     private String name;
-    private String maxDistance;
+    private double maxDistance;
     private double pricePerMile;
     private LocalTime startTime;
     private LocalTime endTime;
@@ -15,9 +15,9 @@ public class Courier {
     }
 
 
-    public Courier(String name, String maxDistance, double pricePerMile, String startTime, String endTime, boolean hasRefrigeratedBox) {
+    public Courier(String name, double maxDistance, double pricePerMile, String startTime, String endTime, boolean hasRefrigeratedBox) {
         this.name = name;
-        this.maxDistance = Double.toString(Double.parseDouble(maxDistance));
+        this.maxDistance = maxDistance;
         this.pricePerMile = pricePerMile;
         this.startTime = LocalTime.parse(startTime, DateTimeFormatter.ofPattern("HH:mm"));
         this.endTime = LocalTime.parse(endTime, DateTimeFormatter.ofPattern("HH:mm"));
@@ -35,12 +35,12 @@ public class Courier {
     }
 
     public double getMaxDistance() {
-        return Double.parseDouble(maxDistance);
+        return maxDistance;
     }
 
-    public void setMaxDistance(String maxDistance) {
-        this.maxDistance = maxDistance;
-    }
+//    public void setMaxDistance(String maxDistance) {
+//        this.maxDistance = maxDistance;
+//    }
 
     public double getPricePerMile() {
         return pricePerMile;
@@ -74,7 +74,8 @@ public class Courier {
         this.hasRefrigeratedBox = hasRefrigeratedBox;
     }
 
-    //    @Override
+
+    // Check if courier is available for the order
     public boolean isAvailable(Order order) {
         return order.getOrderTime().isAfter(startTime) && order.getOrderTime().isBefore(endTime) && order.getDistance() <= getMaxDistance() && order.isRefrigeratedBoxRequired() == hasRefrigeratedBox;
     }
