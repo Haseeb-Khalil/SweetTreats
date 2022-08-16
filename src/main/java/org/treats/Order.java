@@ -10,9 +10,7 @@ public class Order {
     private boolean isRefrigeratedBoxRequired;
     private double distance;
 
-    public Order() {
-    }
-
+    // Constructor for Order class.
     public Order(String orderTime, boolean hasRefrigeratedBox, double distance) {
         if (orderTime == null || orderTime == "" || !isValidTime(orderTime)) {
             System.out.println("You entered invalid Order time format: " + orderTime + "." + " Required Format (HH:mm)");
@@ -25,7 +23,7 @@ public class Order {
         this.distance = distance;
     }
 
-
+    // Getters and Setters
     public LocalTime getOrderTime() {
         return orderTime;
     }
@@ -50,11 +48,8 @@ public class Order {
         this.distance = distance;
     }
 
-
+    // Check if time is in HH:mm format
     public static boolean isValidTime(String time) {
-
-//            // CONVERT TIME TO STRING
-//            String time = OrderTime.format(DateTimeFormatter.ofPattern("HH:mm"));
         // Regex to check valid time in 24-hour format.
         String regex = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
 

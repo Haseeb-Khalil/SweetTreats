@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SweetTreatsShop {
+public class CourierSelector {
     static Courier bobby = new Courier("Bobby", 5.0, 1.75, "09:00", "13:00", true);
     static Courier martin = new Courier("Martin", 3.0, 1.50, "09:00", "17:00", false);
     static Courier geoff = new Courier("Geoff", 4.0, 2.00, "10:00", "16:00", true);

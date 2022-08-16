@@ -8,9 +8,9 @@ public class Main {
 //        Order order = new Order("13:00", true, 4.0); // Prints Geoff
 
 //        Order order = new Order("11:00", true, 0); // Throws Exception for distance.
-//        Order order = new Order("1300", true, 4.0); // Doesn't accept this format instead uses local time of device.
-        System.out.println(SweetTreatsShop.getCourierDetails(order));
-        System.out.println(SweetTreatsShop.getDeliveryPrice(order));
+//        Order order = new Order("1300 AM", true, 4.0); // Doesn't accept this format instead uses local time of device.
+        System.out.println(CourierSelector.getCourierDetails(order));
+        System.out.println(CourierSelector.getDeliveryPrice(order));
     }
 
 }

@@ -11,10 +11,8 @@ public class Courier {
     private LocalTime endTime;
     private boolean hasRefrigeratedBox;
 
-    public Courier() {
-    }
 
-
+// Constructor for Courier class.
     public Courier(String name, double maxDistance, double pricePerMile, String startTime, String endTime, boolean hasRefrigeratedBox) {
         this.name = name;
         this.maxDistance = maxDistance;
