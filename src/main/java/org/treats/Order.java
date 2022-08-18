@@ -2,8 +2,6 @@ package org.treats;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,11 +13,12 @@ public class Order {
     // Constructor for Order class.
     public Order(String orderTime, boolean hasRefrigeratedBox, double distance) {
         if (orderTime == null || orderTime == "" || !isValidTime(orderTime)) {
+            throw new IllegalArgumentException("Invalid order time");
 //            LOGGER.log(Level.WARNING, "You entered invalid Order time format: " + orderTime + "." + " Required Format (HH:mm)");
-            System.out.println("You entered invalid Order time format: " + orderTime + "." + " Required Format (HH:mm)");
-            this.orderTime = LocalTime.now();
+//            System.out.println("You entered invalid Order time format: " + orderTime + "." + " Required Format (HH:mm)");
+//            this.orderTime = LocalTime.now();
 //            LOGGER.log(Level.INFO, "Using current time of your device. Order time: " + this.orderTime.format(DateTimeFormatter.ofPattern("HH:mm")));
-            System.out.println("Using current time of your device. Order time: " + this.orderTime.format(DateTimeFormatter.ofPattern("HH:mm")));
+//            System.out.println("Using current time of your device. Order time: " + this.orderTime.format(DateTimeFormatter.ofPattern("HH:mm")));
         } else {
             this.orderTime = LocalTime.parse(orderTime, DateTimeFormatter.ofPattern("HH:mm"));
         }

@@ -12,7 +12,7 @@ public class Courier {
     private boolean hasRefrigeratedBox;
 
 
-// Constructor for Courier class.
+    // Constructor for Courier class.
     public Courier(String name, double maxDistance, double pricePerMile, String startTime, String endTime, boolean hasRefrigeratedBox) {
         this.name = name;
         this.maxDistance = maxDistance;
@@ -76,5 +76,9 @@ public class Courier {
     // Check if courier is available for the order
     public boolean isAvailable(Order order) {
         return order.getOrderTime().isAfter(startTime) && order.getOrderTime().isBefore(endTime) && order.getDistance() <= getMaxDistance() && order.isRefrigeratedBoxRequired() == hasRefrigeratedBox;
+    }
+
+    public LocalTime getOrderTime(Order order) {
+        return order.getOrderTime();
     }
 }

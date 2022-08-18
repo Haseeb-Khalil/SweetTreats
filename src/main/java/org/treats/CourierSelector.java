@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class CourierSelector {
 
     private static final Logger LOGGER = Logger.getLogger(CourierSelector.class.getName());
-
     static {
 //        ConsoleHandler consoleHandler = new ConsoleHandler();
 //        LOGGER.addHandler(consoleHandler);
@@ -38,7 +37,7 @@ public class CourierSelector {
     static Courier bobby = new Courier("Bobby", 5.0, 1.75, "09:00", "13:00", true);
     static Courier martin = new Courier("Martin", 3.0, 1.50, "09:00", "17:00", false);
     static Courier geoff = new Courier("Geoff", 4.0, 2.00, "10:00", "16:00", true);
-    static Courier john = new Courier("John", 4.5, 1.25, "10:00", "16:00", true);
+    static Courier john = new Courier("John", 3.0, 1.25, "10:00", "16:00", true);
 
     // Couriers List
     static List<Courier> couriers = new ArrayList<>(
