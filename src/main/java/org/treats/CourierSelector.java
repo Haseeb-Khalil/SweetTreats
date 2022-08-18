@@ -58,29 +58,12 @@ public class CourierSelector {
             throw new Exception("Order time is outside of working hours");
         }
 
-        // THIS METHOD WORKS BUT IS NOT THE BEST WAY TO DO IT.//
-//        for (Courier courier : couriers) {
-//            if (courier.isAvailable(order)) {
-//
-//
-//                LOGGER.log(Level.INFO, "Best suitable courier for this order is: " + courier.getName() +
-//                        "\n" + "Working Hours: " + courier.getStartTime() + " - " + courier.getEndTime() +
-//                        "\n" + "Has Refrigerated Box: " + courier.isHasRefrigeratedBox() +
-//                        "\n" + "Price: £" + courier.getPricePerMile() + " per mile" +
-//                        "\n" + "Total Delivery Price For This Order is: £" + courier.getPricePerMile() * order.getDistance());
-//
-//            }
-//            return courier;
-//
-//        }
-//        throw new Exception("No courier is available for this order");
-//        Making a list of available couriers
 
-        List<Courier> availableCourier = couriers.stream().filter(courier -> courier.isAvailable(order)).collect(Collectors.toList());
+        List<Courier> availableCouriers = couriers.stream().filter(courier -> courier.isAvailable(order)).collect(Collectors.toList()); // List of available couriers
 
-        if (!availableCourier.isEmpty()) {
-            Comparator<Courier> comparator = Comparator.comparing(courier -> courier.getPricePerMile());
-            Courier cheapestCourier = availableCourier.stream().min(comparator).get();
+        if (!availableCouriers.isEmpty()) {
+            Comparator<Courier> comparator = Comparator.comparing(courier -> courier.getPricePerMile()); // Compares by price per mile
+            Courier cheapestCourier = availableCouriers.stream().min(comparator).get(); // Gets the cheapest courier
 
             LOGGER.log(Level.INFO, "Best suitable courier for this order is: " + cheapestCourier.getName() +
                     "\n" + "Working Hours: " + cheapestCourier.getStartTime() + " - " + cheapestCourier.getEndTime() +

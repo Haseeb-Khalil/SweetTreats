@@ -14,7 +14,6 @@ public class Order {
 
     // Constructor for Order class.
     public Order(String orderTime, boolean hasRefrigeratedBox, double distance) {
-//        final Logger LOGGER = Logger.getLogger(Order.class.getName());
         if (orderTime == null || orderTime == "" || !isValidTime(orderTime)) {
 //            LOGGER.log(Level.WARNING, "You entered invalid Order time format: " + orderTime + "." + " Required Format (HH:mm)");
             System.out.println("You entered invalid Order time format: " + orderTime + "." + " Required Format (HH:mm)");
